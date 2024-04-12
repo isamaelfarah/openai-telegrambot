@@ -20,6 +20,11 @@ logger = logging.getLogger(__name__)
 
 # Define a few command handlers. These usually take the two arguments update and
 # context.
+def help_command(update: Update, context) -> None:
+    """Send a message when the command /help is issued."""
+    update.message.reply_text("Reply to my message to get started!")
+
+
 def start(update: Update, context) -> None:
     """Send a message when the command /start is issued."""
     user = update.effective_user
@@ -28,11 +33,6 @@ def start(update: Update, context) -> None:
         reply_markup=ForceReply(selective=True),
     )
     help_command(update, context)
-
-
-def help_command(update: Update, context) -> None:
-    """Send a message when the command /help is issued."""
-    update.message.reply_text("Reply to my message to get started!")
 
 
 def image_command(update: Update, context) -> None:
